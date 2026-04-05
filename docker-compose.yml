@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  welcome_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.welcome
+    container_name: welcome_service
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongodb
+    volumes:
+      - ./output_letters:/app/output_letters
+
+  offer_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.offer
+    container_name: offer_service
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mongodb
+    volumes:
+      - ./output_letters:/app/output_letters
+
+  validation_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.validation
+    container_name: validation_service
+    depends_on:
+      - mongodb
+      - welcome_service
+      - offer_service
+    volumes:
+      - ./output_letters:/app/output_letters
+      - ./invalid_records_log.json:/app/invalid_records_log.json
