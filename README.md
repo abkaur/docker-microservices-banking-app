@@ -88,7 +88,7 @@ MongoDB is used to store:
 
 ### Step 1: Clone the repo
 ```bash
-git clone https://github.com/your-username/microservices-bank-letter-system.git
+git clone https://github.com/abkaur/microservices-bank-letter-system.git
 cd microservices-bank-letter-system
 Step 2: Run Docker
 docker compose up --build
@@ -113,6 +113,8 @@ Then run:
 use bank_db
 show collections
 db.validation_logs.find().pretty()
+
+
 🎯 Key Features
 
 ✔ Microservices architecture
@@ -123,6 +125,7 @@ db.validation_logs.find().pretty()
 ✔ File-based output generation
 
 🌟 Future Improvements
+
 Add RabbitMQ for async communication
 Deploy on AWS (ECS / EKS)
 Add frontend dashboard
