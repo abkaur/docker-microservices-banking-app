@@ -102,7 +102,7 @@ def process_data(file_path):
                 "errors": error_list
             })
 
-    # Save invalid records into JSON file for proof
+    # Save invalid records into JSON file for review (to show an example)
     with open("invalid_records_log.json", "w", encoding="utf-8") as err_file:
         json.dump(invalid_records, err_file, indent=4)
 
